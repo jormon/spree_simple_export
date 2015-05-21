@@ -2,13 +2,13 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_simple_export'
-  s.version     = '2.3.7.beta'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.version     = '1'
+  s.summary     = 'Export orders'
+  s.description = 'Simple interface to export orders in csv.'
   s.required_ruby_version = '>= 1.9.3'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
+  s.author    = 'Jordan Moncharmont'
+  s.email     = 'jormon@gmail.com'
   # s.homepage  = 'http://www.spreecommerce.com'
 
   #s.files       = `git ls-files`.split("\n")
