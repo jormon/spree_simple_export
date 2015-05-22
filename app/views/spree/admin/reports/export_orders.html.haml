@@ -1,0 +1,29 @@
+- content_for :page_title do
+  = Spree.t(:export_orders)
+
+- content_for :page_actions do
+  %li
+    = link_to_with_icon 'arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button'
+
+- content_for :table_filter_title do
+  = Spree.t(:date_range)
+
+- content_for :table_filter do
+  = form_tag spree.background_export_orders_admin_reports_path do
+    - if supports_store_id?
+      %div.select-filter.field.align-center
+        = label_tag nil, Spree.t(:store), class: 'inline'
+        = select_tag :store_id, options_from_collection_for_select(Spree::Store.all, "id", "name", params[:store_id]), prompt: 'All'
+    %div.date-range-filter.field.align-center
+      = label_tag nil, Spree.t(:start), class: 'inline'
+      = text_field_tag :created_at_gt, datepicker_field_value(params[:created_at_gt]), class: 'datepicker datepicker-from'
+      %span.range-divider
+        %i.fa.fa-arrow-right
+        = text_field_tag :created_at_lt, datepicker_field_value(params[:created_at_lt]), class: 'datepicker datepicker-to'
+        = label_tag nil, Spree.t(:end), class: 'inline'
+    %div.field.align-center
+      = check_box_tag :include_pii, params[:incldue_pii]
+      = label_tag nil, Spree.t(:include_pii), class: "inline"
+
+    %div.actions.filter-actions
+      = button Spree.t(:export_to_email)

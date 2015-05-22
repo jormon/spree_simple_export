@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  spree:
+    export_orders_description: "Sends you an e-mail with orders.csv"
+    email_you_shortly: "We will email the report to you shortly!  Please wait up to 60 seconds"
+    export_to_email: "Export to e-mail"
+    include_pii: "Include Personally Identifying Information"
