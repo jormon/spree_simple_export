@@ -1,5 +1,5 @@
 class SpreeSimpleExport::OrderExporter
-  def initialize created_at_lt_i, created_at_gt_i, store_id, include_pii
+  def initialize completed_at_lt_i, completed_at_gt_i, store_id, include_pii
     @include_pii = include_pii
 
     @variant_name_map = _variant_name_map.freeze
@@ -10,7 +10,7 @@ class SpreeSimpleExport::OrderExporter
       @order_scope = @order_scope.where(store_id: store_id)
     end
     @order_scope = @order_scope.where \
-      created_at: [(Time.at created_at_gt_i)..(Time.at created_at_lt_i)]
+      completed_at: [(Time.at created_at_gt_i)..(Time.at created_at_lt_i)]
   end
 
 
