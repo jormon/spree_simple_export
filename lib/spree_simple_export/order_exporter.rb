@@ -10,7 +10,7 @@ class SpreeSimpleExport::OrderExporter
       @order_scope = @order_scope.where(store_id: store_id)
     end
     @order_scope = @order_scope.where \
-      completed_at: [(Time.at created_at_gt_i)..(Time.at created_at_lt_i)]
+      completed_at: [(Time.at completed_at_gt_i)..(Time.at completed_at_lt_i)]
   end
 
 
