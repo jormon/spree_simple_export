@@ -49,7 +49,6 @@ class SpreeSimpleExport::OrderExporter
         li.variant.sku,
         order.shipments.first.number,
         @variant_name_map[li.variant_id],
-
         order.promotions.map(&:code).join(','),
       ]
 
@@ -81,7 +80,7 @@ class SpreeSimpleExport::OrderExporter
   end
 
   def _columns
-    cols = %w[number date_time first_name last_name email state shipment_state billing_city billing_state billing_zip shipping_city shipping_state shipping_zip item_total ship_total tax_total shipment_adjustments_total order_adjustments_total total li_quantity li_price li_addition_tax_total li_variant_id li_sku li_slug li_shipment promotion_codes]
+    cols = %w[number date_time first_name last_name email state shipment_state billing_city billing_state billing_zip shipping_city shipping_state shipping_zip item_total ship_total tax_total shipment_adjustments_total order_adjustments_total total li_quantity li_price li_addition_tax_total li_variant_id li_sku li_shipment li_slug promotion_codes]
     unless @include_pii
       cols.delete 'first_name'
       cols.delete 'last_name'
