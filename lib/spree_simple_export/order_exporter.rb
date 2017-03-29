@@ -5,7 +5,7 @@ class SpreeSimpleExport::OrderExporter
     @variant_name_map = _variant_name_map.freeze
     @columns = _columns.freeze
 
-    @order_scope = Spree::Order.complete
+    @order_scope = Spree::Order.complete.includes(:line_items)
     unless @store_id.blank?
       @order_scope = @order_scope.where(store_id: store_id)
     end
@@ -13,10 +13,15 @@ class SpreeSimpleExport::OrderExporter
       completed_at: [(Time.at completed_at_gt_i)..(Time.at completed_at_lt_i)]
   end
 
-
+  # accepts a block that returns true/false and accepts one argument: order.
+  # block is called with each order, and if it returns false, the order is
+  # omitted from the export
   def to_csv
     csv_data = []
     @order_scope.find_each do |order|
+      if block_given?
+        next unless yield order
+      end
       csv_data += order_to_line_item_arr(order).map(&:to_csv)
     end
     csv_data_s = ([@columns.join(",") + "\n"] + csv_data).flatten.join
