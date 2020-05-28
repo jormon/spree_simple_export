@@ -2,22 +2,21 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_simple_export'
-  s.version     = '1'
+  s.version     = '1.1.0'
   s.summary     = 'Export orders'
   s.description = 'Simple interface to export orders in csv.'
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.2.4'
 
   s.author    = 'Jordan Moncharmont'
   s.email     = 'jormon@gmail.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.homepage  = 'https://github.com/jormon/spree_simple_export'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.3'
-  s.add_dependency 'sucker_punch', '~> 1.5.0'
+  s.add_dependency 'spree_core', '~> 3.0'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'

@@ -1,6 +1,6 @@
 Spree::Admin::ReportsController.class_eval do
-  before_filter :created_at_gt, only: [:export_orders]
-  before_filter :created_at_lt, only: [:export_orders]
+  before_action :created_at_gt, only: [:export_orders]
+  before_action :created_at_lt, only: [:export_orders]
 
   module SimpleExport
     def initialize
@@ -27,7 +27,7 @@ Spree::Admin::ReportsController.class_eval do
 
     raise "No email for signed in user!" if async_params[:email].blank?
 
-    Spree::Admin::ExportOrderEmailerJob.new.async.perform async_params
+    Spree::Admin::ExportOrderEmailerJob.perform_later async_params
     flash[:notice] = Spree.t(:email_you_shortly)
     redirect_to admin_reports_path
   end
