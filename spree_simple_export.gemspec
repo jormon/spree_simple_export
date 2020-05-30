@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_simple_export'
-  s.version     = '1.1.0'
+  s.version     = '1.1.1'
   s.summary     = 'Export orders'
   s.description = 'Simple interface to export orders in csv.'
   s.required_ruby_version = '>= 2.2.4'
