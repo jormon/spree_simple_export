@@ -54,7 +54,7 @@ class SpreeSimpleExport::OrderExporter
         li.variant.sku,
         order.shipments.first.number,
         @variant_name_map[li.variant_id],
-        order.promotions.map(&:code).join(','),
+        order.promotions.map(&:export_code).join(','),
       ]
 
       # insert some extra fields if we want biographical info
